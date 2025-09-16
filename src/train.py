@@ -1,5 +1,5 @@
 from sklearn.model_selection import train_test_split
-from joblib import dump
+import pickle
 from logger import logging
 
 def train(X, y, model, config):
@@ -16,7 +16,8 @@ def train(X, y, model, config):
     logging.info("Model training completed.")
     
     model_path = config["output"]["model_path"]
-    dump(model, model_path)
+    with open(model_path, 'wb') as f:
+        pickle.dump(model, f)
     logging.info(f"Trained model saved to: {model_path}")
     
     return model, X_test, y_test

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Iris Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        h3 {
+            margin-top: 25px;
+            color: #2c3e50;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <h2>Iris Flower Classification</h2>
+    <form action="/predict" method="post">
+        <label>Sepal Length (cm):</label>
+        <input type="number" name="sepal_length" step="0.01" required>
+
+        <label>Sepal Width (cm):</label>
+        <input type="number" name="sepal_width" step="0.01" required>
+
+        <label>Petal Length (cm):</label>
+        <input type="number" name="petal_length" step="0.01" required>
+
+        <label>Petal Width (cm):</label>
+        <input type="number" name="petal_width" step="0.01" required>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction_text %}
+        <h3>{{ prediction_text }}</h3>
+    {% endif %}
+</body>
+</html>
